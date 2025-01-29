@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Core Idea: Focus on users providing their weekly availability, and sessions are created dynamically based on matching times.
 
-Things you may want to cover:
+### Backend Considerations
 
-* Ruby version
+	Default Calendar Initialization:
+    	Populate the calendar with TimeSlot records.
+    	Fetch the user’s existing UserAvailability to pre-fill slots.
 
-* System dependencies
+	API Endpoints:
+    	GET /api/availability → Retrieves the user's current availability.
+    	POST /api/availability → Updates availability for specific slots.
 
-* Configuration
+	Validation:
+    	Ensure overlapping time slots are not saved.
+    	Validate that time slots exist within the predefined TimeSlot table.
 
-* Database creation
+### UI/UX Features
 
-* Database initialization
+	Color Coding:
+    	Available Slots: Highlighted in green.
+    	Unavailable Slots: Grayed out or unselected.
+    	Hovered Slot: Changes to a light color to indicate interactivity.
+	
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Bulk Actions:
+    	A dropdown or toggle to apply availability to multiple days at once (e.g., "Apply Monday’s schedule to the entire week").
 
-* ...
+	Drag-and-Drop:
+    	Users can click and drag across time slots to mark availability instead of clicking each slot individually.
+
+	Preview Mode:
+    	Before saving, show a summary of the weekly availability in a compact format (e.g., “Monday: 9–5, Tuesday: 12–3”).
+
+	Mobile Responsiveness:
+    	Adjusts the calendar to a vertical scroll format on smaller devices.
+
+* Ruby version: 3.3.1
+
