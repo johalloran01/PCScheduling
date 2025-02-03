@@ -85,3 +85,6 @@ user_2_availabilities = [
 ]
 
 overlap = UserAvailaibility.where(user_id: [1,2])
+
+#git remote
+#https://github.com/johalloran01/PCScheduling/blob/main/riff.rb
