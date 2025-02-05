@@ -14,8 +14,6 @@ class User < ApplicationRecord
 
   private
 
-  #dummy commits for testing credentials
-
   def set_default_timezone
     self.time_zone ||= "UTC"
   end
