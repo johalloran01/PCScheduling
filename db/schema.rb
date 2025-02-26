@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_03_210220) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_26_181805) do
+  create_table "time_slots", force: :cascade do |t|
+    t.integer "day_of_week"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_of_week", "start_time"], name: "index_time_slots_on_day_of_week_and_start_time", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
