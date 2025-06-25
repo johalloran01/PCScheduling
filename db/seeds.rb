@@ -15,3 +15,14 @@ User.find_or_create_by!(email: "bob@email.com") do |user|
   user.password_confirmation = "securepass"
   user.time_zone = "Pacific Time (US & Canada)"
 end
+
+range = (Time.utc(2000,1,1,0)..Time.utc(2000,1,1,23,59)).step(30.minutes)
+
+TimeSlot.day_of_weeks.each do |day_of_week, _|
+  range.each do |start_time|
+    end_time = start_time + 29.minutes
+    TimeSlot.find_or_create_by!(day_of_week: day_of_week, start_time: start_time) do |timeslot|
+      timeslot.end_time = end_time
+    end
+  end
+end
