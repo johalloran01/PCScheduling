@@ -24,10 +24,10 @@ class UserAvailabilitiesController < ApplicationController
     end
 
     # Success response
-    redirect_to_user_availabilities_path, notice: 'Availability updated successfully!'
+    redirect_to user_availabilities_path, notice: 'Availability updated successfully!'
 
   rescue ActiveRecord::RecordInvalid => e 
-    redirect_to_user_availabilities_path, alert: 'Failed to update availability. Please try again.'
+    redirect_to user_availabilities_path, alert: 'Failed to update availability. Please try again.'
   end
 
   def update
@@ -43,9 +43,14 @@ class UserAvailabilitiesController < ApplicationController
     end
 
     # Success response
-    redirect_to_user_availabilities_path, notice: 'Availability updated successfully!'
+    redirect_to user_availabilities_path, notice: 'Availability updated successfully!'
 
   rescue ActiveRecord::RecordInvalid => e 
-    redirect_to_user_availabilities_path, alert: 'Failed to update availability. Please try again.'
+    redirect_to user_availabilities_path, alert: 'Failed to update availability. Please try again.'
+  end
+
+  private 
+  def current_user
+    User.first
   end
 end

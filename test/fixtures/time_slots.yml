@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+morning_slot:
   day_of_week: 1
-  start_time: 2025-02-26 13:18:05
-  end_time: 2025-02-26 13:18:05
+  start_time: "09:00"
+  end_time: "09:30"
 
-two:
+afternoon_slot:
   day_of_week: 1
-  start_time: 2025-02-26 13:18:05
-  end_time: 2025-02-26 13:18:05
+  start_time: "13:00"
+  end_time: "13:30"

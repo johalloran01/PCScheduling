@@ -2,8 +2,8 @@
 
 one:
   user: one
-  time_slot: one
+  time_slot: morning_slot
 
 two:
   user: two
-  time_slot: two
+  time_slot: afternoon_slot

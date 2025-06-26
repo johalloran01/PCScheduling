@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  email: MyString
-  password_digest: MyString
-  time_zone: MyString
+  name: Alice
+  email: alice@example.com
+  password_digest: <%= User.new(password: 'password').password_digest %>
+  time_zone: "Eastern Time (US & Canada)"
 
 two:
-  name: MyString
-  email: MyString
-  password_digest: MyString
-  time_zone: MyString
+  name: Bob
+  email: bob@example.com
+  password_digest: <%= User.new(password: 'password').password_digest %>
+  time_zone: "Pacific Time (US & Canada)"
