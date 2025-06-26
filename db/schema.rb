@@ -10,7 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_25_202556) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_26_190310) do
+  create_table "meetup_availabilities", force: :cascade do |t|
+    t.integer "meetup_id", null: false
+    t.integer "user_id", null: false
+    t.integer "time_slot_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meetup_id"], name: "index_meetup_availabilities_on_meetup_id"
+    t.index ["time_slot_id"], name: "index_meetup_availabilities_on_time_slot_id"
+    t.index ["user_id"], name: "index_meetup_availabilities_on_user_id"
+  end
+
+  create_table "meetup_participants", force: :cascade do |t|
+    t.integer "meetup_id", null: false
+    t.integer "user_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meetup_id"], name: "index_meetup_participants_on_meetup_id"
+    t.index ["user_id"], name: "index_meetup_participants_on_user_id"
+  end
+
+  create_table "meetups", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "creator_id"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "time_slots", force: :cascade do |t|
     t.integer "day_of_week"
     t.time "start_time"
@@ -40,6 +70,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_25_202556) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "meetup_availabilities", "meetups"
+  add_foreign_key "meetup_availabilities", "time_slots"
+  add_foreign_key "meetup_availabilities", "users"
+  add_foreign_key "meetup_participants", "meetups"
+  add_foreign_key "meetup_participants", "users"
   add_foreign_key "user_availabilities", "time_slots"
   add_foreign_key "user_availabilities", "users"
 end
