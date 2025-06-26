@@ -31,5 +31,21 @@ class UserAvailabilitiesController < ApplicationController
   end
 
   def update
+    time_slot_ids = params[:time_slot_ids] || []
+
+    # start a transaction to ensure all-or-nothing update
+    ActiveRecord::Base.transaction do
+      # Clear the existing availabilities for this user
+      current_user.user_availabilities.destroy_all
+      time_slot_ids.each do |time_slot_id|
+        current_user.user_availabilities.create!(time_slot_id: time_slot_id)
+      end
+    end
+
+    # Success response
+    redirect_to_user_availabilities_path, notice: 'Availability updated successfully!'
+
+  rescue ActiveRecord::RecordInvalid => e 
+    redirect_to_user_availabilities_path, alert: 'Failed to update availability. Please try again.'
   end
 end
