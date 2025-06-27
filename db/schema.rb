@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_26_190310) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_27_201727) do
   create_table "meetup_availabilities", force: :cascade do |t|
     t.integer "meetup_id", null: false
     t.integer "user_id", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_26_190310) do
     t.index ["meetup_id"], name: "index_meetup_availabilities_on_meetup_id"
     t.index ["time_slot_id"], name: "index_meetup_availabilities_on_time_slot_id"
     t.index ["user_id"], name: "index_meetup_availabilities_on_user_id"
+  end
+
+  create_table "meetup_memberships", force: :cascade do |t|
+    t.integer "meetup_id", null: false
+    t.integer "user_id", null: false
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meetup_id"], name: "index_meetup_memberships_on_meetup_id"
+    t.index ["user_id"], name: "index_meetup_memberships_on_user_id"
   end
 
   create_table "meetup_participants", force: :cascade do |t|
@@ -73,6 +83,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_26_190310) do
   add_foreign_key "meetup_availabilities", "meetups"
   add_foreign_key "meetup_availabilities", "time_slots"
   add_foreign_key "meetup_availabilities", "users"
+  add_foreign_key "meetup_memberships", "meetups"
+  add_foreign_key "meetup_memberships", "users"
   add_foreign_key "meetup_participants", "meetups"
   add_foreign_key "meetup_participants", "users"
   add_foreign_key "user_availabilities", "time_slots"
