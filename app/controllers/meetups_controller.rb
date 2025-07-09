@@ -1,5 +1,5 @@
 class MeetupsController < ApplicationController
-  before_action : set_meetup, only: [:show, :destroy]
+  before_action :set_meetup, only: [:show, :destroy]
 
   def new
     @meetup = Meetup.new

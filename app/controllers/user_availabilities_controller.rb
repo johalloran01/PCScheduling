@@ -18,7 +18,7 @@ class UserAvailabilitiesController < ApplicationController
       # Clear the existing availabilities for this user
       current_user.user_availabilities.destroy_all
       #create new availabilities for each selected time slot.
-      time_slots_ids.each do |time_slot_id|
+      time_slot_ids.each do |time_slot_id|
         current_user.user_availabilities.create!(time_slot_id: time_slot_id)
       end
     end
