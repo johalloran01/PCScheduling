@@ -1,12 +1,32 @@
-
-<wa-card class="timeslot_card">
-	<div> Start Time: <%= @time_slot.start_time.strftime('%H:%M') %> </div>
-</wa-card>
-
+<label class="timeslot_card">
+	<wa-card>
+		<div class="displayed_time"> Start Time: <%= @time_slot.start_time.strftime('%H:%M') %> </div>
+	</wa-card>
+	<input type="checkbox" name="selected_timeslot" visible />
+</label>
 <style>
 	.timeslot_card{
-		max-width: 300px;
+		width: 300px;
+		display: block;
+	}
+
+	.timeslot_card wa-card{
 		align-content: center;
 		background: var(--wa-color-surface-lowered);
+		transition: all var(--wa-transition-slow);
 	}
+
+	.timeslot_card input[type="checkbox"]{
+		display:none;
+	}
+
+	.displayed_time {
+		text-align: center;
+	}
+
+	.timeslot_card:has(input:checked) wa-card{
+		background: var(--wa-color-success-50);
+	}
+
+
 </style>
