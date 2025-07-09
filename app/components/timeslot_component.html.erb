@@ -1,0 +1,12 @@
+
+<wa-card class="timeslot_card">
+	<div> Start Time: <%= @time_slot.start_time.strftime('%H:%M') %> </div>
+</wa-card>
+
+<style>
+	.timeslot_card{
+		max-width: 300px;
+		align-content: center;
+		background: var(--wa-color-surface-lowered);
+	}
+</style>
