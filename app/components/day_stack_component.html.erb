@@ -1,4 +1,5 @@
-<div>Add DayStack template here</div>
-<% @timeslots.each do |timeslot| %>
-  <%= render TimeslotComponent.new(timeslot: timeslot) %>
-<% end %>
+<div class="wa-stack wa-gap-0">
+	<% @timeslots.each do |timeslot| %>
+	  <%= render TimeslotComponent.new(timeslot: timeslot) %>
+	<% end %>
+</div>
