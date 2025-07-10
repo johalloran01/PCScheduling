@@ -2,6 +2,6 @@
 
 class TimeslotComponentPreview < ViewComponent::Preview
   def default
-    render(TimeslotComponent.new(time_slot: TimeSlot.first))
+    render(TimeslotComponent.new(timeslot: TimeSlot.first))
   end
 end

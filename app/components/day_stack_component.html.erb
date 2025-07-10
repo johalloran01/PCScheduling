@@ -1,0 +1,4 @@
+<div>Add DayStack template here</div>
+<% @timeslots.each do |timeslot| %>
+  <%= render TimeslotComponent.new(timeslot: timeslot) %>
+<% end %>
