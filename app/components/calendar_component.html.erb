@@ -1,4 +1,23 @@
-<div>Add Calendar template here</div>
-<div class = "wa-cluster"><
-<%= %>
+<% days_order = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday] %>
+
+<div class="calendar wa-cluster">
+  <!-- Time Labels Column -->
+  <div class="calendar-cluster">
+    <div class="calendar-day-header"></div>
+    <% @time_labels.each do |time_label| %>
+      <div class="calendar-time-label"><%= time_label %></div>
+    <% end %>
+  </div>
+
+  <!-- Day Columns -->
+  <% days_order.each do |day| %>
+    <div class="calendar-cluster">
+      <div class="calendar-day-header"><%= day.to_s.titleize %></div>
+      <%= render DayStackComponent.new(
+            timeslots: @week_days[day] || [],
+            time_labels: @time_labels,
+            day: day
+          ) %>
+    </div>
+  <% end %>
 </div>

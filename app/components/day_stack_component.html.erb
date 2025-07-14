@@ -1,5 +1,10 @@
 <div class="wa-stack wa-gap-0">
-	<% @timeslots.each do |timeslot| %>
-	  <%= render TimeslotComponent.new(timeslot: timeslot) %>
-	<% end %>
+  <% @time_labels.each do |time_label| %>
+    <% timeslot = @timeslots.find { |ts| ts.start_time.strftime("%H:%M") == time_label } %>
+    <% if timeslot %>
+      <%= render TimeslotComponent.new(timeslot: timeslot) %>
+    <% else %>
+      <div class="empty-timeslot"></div>
+    <% end %>
+  <% end %>
 </div>
