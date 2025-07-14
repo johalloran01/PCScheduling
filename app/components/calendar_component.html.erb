@@ -1,23 +1,60 @@
 <% days_order = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday] %>
 
-<div class="calendar wa-cluster">
-  <!-- Time Labels Column -->
-  <div class="calendar-cluster">
-    <div class="calendar-day-header"></div>
+<table class="calendar-table">
+  <thead>
+    <tr>
+      <th></th>
+      <% days_order.each do |day| %>
+        <th class="calendar-day-header"><%= day.to_s.titleize %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
     <% @time_labels.each do |time_label| %>
-      <div class="calendar-time-label"><%= time_label %></div>
+      <tr>
+        <td class="calendar-time-label"><%= time_label %></td>
+        <% days_order.each do |day| %>
+          <% timeslot = (@week_days[day] || []).find { |ts| ts.start_time.strftime("%H:%M") == time_label } %>
+          <td class="calendar-timeslot-cell">
+            <% if timeslot %>
+              <%= render TimeslotComponent.new(timeslot: timeslot) %>
+            <% else %>
+              <div class="empty-timeslot"></div>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
     <% end %>
-  </div>
+  </tbody>
+</table>
 
-  <!-- Day Columns -->
-  <% days_order.each do |day| %>
-    <div class="calendar-cluster">
-      <div class="calendar-day-header"><%= day.to_s.titleize %></div>
-      <%= render DayStackComponent.new(
-            timeslots: @week_days[day] || [],
-            time_labels: @time_labels,
-            day: day
-          ) %>
-    </div>
-  <% end %>
-</div>
+<style>
+	.calendar-table {
+	  width: 100%;
+	  border-collapse: collapse;
+	  table-layout: fixed;
+	}
+	.calendar-table th, .calendar-table td {
+	  border: 1px solid #e0e0e0;
+	  padding: 4px;
+	  text-align: center;
+	}
+	.calendar-day-header {
+	  background: #f8f8f8;
+	  font-weight: bold;
+	  position: sticky;
+	  top: 0;
+	  z-index: 2;
+	}
+	.calendar-time-label {
+	  background: #f0f0f0;
+	  font-weight: bold;
+	  position: sticky;
+	  left: 0;
+	  z-index: 1;
+	}
+	.empty-timeslot {
+	  min-height: 24px;
+	  background: #fafafa;
+	}
+</style>
