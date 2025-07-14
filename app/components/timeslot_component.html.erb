@@ -6,16 +6,23 @@
 </label>
 <style>
 	.timeslot_card{
-		width: 300px;
-		height: 50px;
+		width: 100%;
+		height: 100%;
 		display: block;
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
 	}
 
-	.timeslot_card wa-card{
-		align-content: center;
-		background: var(--wa-color-surface-lowered);
-		transition: all var(--wa-transition-slow);
-		height:50px;
+	.timeslot_card wa-card {
+	  width: 100%;
+	  height: 100%;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  background: var(--wa-color-surface-lowered);
+	  transition: all var(--wa-transition-slow);
+	  box-sizing: border-box;
 	}
 
 	.timeslot_card input[type="checkbox"]{
@@ -23,8 +30,12 @@
 	}
 
 	.displayed_time {
-		text-align: center;
-		font-family: monospace;
+	  text-align: center;
+	  font-family: monospace;
+	  width: 100%;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  white-space: nowrap;
 	}
 
 	.timeslot_card:has(input:checked) wa-card{
