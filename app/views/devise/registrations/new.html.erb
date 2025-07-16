@@ -1,6 +1,18 @@
 <div class="wa-center registration-center">
   <div class="wa-card registration-card">
     <h2 class="wa-text-center wa-mb-4">Register</h2>
+
+    <% if resource.errors.any? %>
+    <div class="wa-alert wa-alert-danger wa-mb-4">
+      <h4 class="wa-mb-2">Please fix the following errors:</h4>
+      <ul>
+        <% resource.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="wa-stack wa-gap-4">
         <!-- Email Field -->
@@ -12,6 +24,16 @@
           icon="user"
           class="wa-input"
         ></wa-input>
+
+        <wa-input
+          type="name"
+          placeholder="Name"
+          name="user[name]"
+          required
+          icon="user"
+          class="wa-input"
+        ></wa-input>
+
 
         <!-- Password Field with Toggle -->
         <wa-input
@@ -36,7 +58,7 @@
         ></wa-input>
 
         <!-- Register Button -->
-        <wa-button class="blue">Register</wa-button>
+        <wa-button class="blue" type="submit">Register</wa-button>
       </div>
     <% end %>
 
