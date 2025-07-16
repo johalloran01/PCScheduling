@@ -1,29 +1,109 @@
-<h2>Sign up</h2>
+<div class="wa-center registration-center">
+  <div class="wa-card registration-card">
+    <h2 class="wa-text-center wa-mb-4">Register</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="wa-stack wa-gap-4">
+        <!-- Email Field -->
+        <wa-input
+          type="email"
+          placeholder="Email"
+          name="user[email]"
+          required
+          icon="user"
+          class="wa-input"
+        ></wa-input>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <!-- Password Field with Toggle -->
+        <wa-input
+          type="password"
+          placeholder="Password"
+          name="user[password]"
+          required
+          password-toggle
+          icon="lock"
+          class="wa-input"
+        ></wa-input>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <!-- Password Confirmation Field -->
+        <wa-input
+          type="password"
+          placeholder="Confirm Password"
+          name="user[password_confirmation]"
+          required
+          password-toggle
+          icon="lock"
+          class="wa-input"
+        ></wa-input>
+
+        <!-- Register Button -->
+        <wa-button class="blue">Register</wa-button>
+      </div>
+    <% end %>
+
+    <!-- Login Link -->
+    <div class="wa-text-center wa-mt-4">
+      <%= link_to "Already have an account? Log in", new_session_path(resource_name), class: "wa-link" %>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+<style>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  .registration-center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+  .registration-card {
+    padding: 2rem;
+    max-width: 40%;
+    width: 100%;
+    border-radius: 2%;
+    background-color: var(--wa-color-gray-30);
+    box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.75);
+  }
+
+  .wa-link {
+    color: white;
+  }
+
+  h2 {
+    color: var(--wa-color-red-95);
+  }
+
+  wa-button.blue::part(base) {
+    border-radius: 6px;
+    border: solid 2px;
+    background: #1e15a3;
+    border-top-color: #c7c5f0;
+    border-left-color: #c7c5f0;
+    border-bottom-color: #04012e;
+    border-right-color: #04012e;
+    color: white;
+    font-size: 1.125rem;
+    box-shadow: 0 2px 10px #0002;
+    transition: all var(--wa-transition-slow) var(--wa-transition-easing);
+  }
+
+  wa-button.blue::part(base):hover {
+    transform: scale(1.05);
+  }
+
+  wa-button.blue::part(base):active {
+    border-top-color: #04012e;
+    border-right-color: #c7c5f0;
+    border-bottom-color: #c7c5f0;
+    border-left-color: #04012e;
+    transform: translateY(1px);
+  }
+
+  wa-button.blue::part(base):focus-visible {
+    outline: dashed 2px deeppink;
+    outline-offset: 4px;
+  }
+
+</style>
 
 <%= render "devise/shared/links" %>
