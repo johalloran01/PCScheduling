@@ -16,7 +16,8 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-
+# Adding Devise Authentication
+gem 'devise'
 # Adding View Components for reusable elements
 gem "view_component"
 

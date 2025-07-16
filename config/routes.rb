@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
 
   resources :user_availabilities, only: [:index, :create] do
     collection do
