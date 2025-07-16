@@ -1,36 +1,45 @@
 <% days_order = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday] %>
+<div class="calendar-center">
+	<table class="calendar-table">
+	  <thead>
+	    <tr>
+	      <th></th>
+	      <% days_order.each do |day| %>
+	        <th class="calendar-day-header"><%= day.to_s.titleize %></th>
+	      <% end %>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @time_labels.each do |time_label| %>
+	      <tr>
+	        <td class="calendar-time-label"><%= time_label %></td>
+	        <% days_order.each do |day| %>
+	          <% timeslot = (@week_days[day] || []).find { |ts| ts.start_time.strftime("%H:%M") == time_label } %>
+	          <td class="calendar-timeslot-cell">
+	            <% if timeslot %>
+	              <%= render TimeslotComponent.new(timeslot: timeslot) %>
+	            <% else %>
+	              <div class="empty-timeslot"></div>
+	            <% end %>
+	          </td>
+	        <% end %>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+</div>
 
-<table class="calendar-table">
-  <thead>
-    <tr>
-      <th></th>
-      <% days_order.each do |day| %>
-        <th class="calendar-day-header"><%= day.to_s.titleize %></th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @time_labels.each do |time_label| %>
-      <tr>
-        <td class="calendar-time-label"><%= time_label %></td>
-        <% days_order.each do |day| %>
-          <% timeslot = (@week_days[day] || []).find { |ts| ts.start_time.strftime("%H:%M") == time_label } %>
-          <td class="calendar-timeslot-cell">
-            <% if timeslot %>
-              <%= render TimeslotComponent.new(timeslot: timeslot) %>
-            <% else %>
-              <div class="empty-timeslot"></div>
-            <% end %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <style>
-	.calendar-table {
+	.calendar-center {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
 	  width: 100%;
+	}
+	.calendar-table {
+	  width: 90%;
+	  justify-content:center;
 	  border-collapse: collapse;
 	  table-layout: fixed;
 	}
@@ -50,8 +59,9 @@
 	  z-index: 2;
 	}
 	.calendar-time-label {
-	  background: #f0f0f0;
+	  background: #86d6db;
 	  font-weight: bold;
+	  border-color:#3A86FF;
 	  position: sticky;
 	  left: 0;
 	  z-index: 1;
