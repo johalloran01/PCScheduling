@@ -8,17 +8,19 @@
       <!-- Right Registration Form -->
       <div class="registration-form-area wa-flex wa-center wa-justify-center">
         <div class="registration-form-fields wa-stack wa-gap-4">
-          <h2 class="wa-text-center wa-mb-4">Register</h2>
+          <div class="wa-text-center wa-mb-4" style="color: white; font-size: var(--wa-font-size-l); font-weight: var(--wa-font-weight-bold);">Register</div>
 
           <% if resource.errors.any? %>
-          <div class="wa-alert wa-alert-danger wa-mb-4">
-            <h4 class="wa-mb-2">Please fix the following errors:</h4>
-            <ul>
-              <% resource.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
+          <wa-alert class="wa-alert--error">
+            <wa-alert-title>Please fix the following errors:</wa-alert-title>
+            <wa-alert-content>
+              <ul>
+                <% resource.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </wa-alert-content>
+          </wa-alert>
           <% end %>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
@@ -32,7 +34,7 @@
             ></wa-input>
 
             <wa-input
-              type="name"
+              type="text"
               placeholder="Name"
               name="user[name]"
               required
@@ -60,7 +62,9 @@
               class="wa-input"
             ></wa-input>
 
-            <wa-button class="blue" type="submit">Register</wa-button>
+            <wa-button type="submit" class="wa-button--filled wa-button--primary">
+              Register
+            </wa-button>
           <% end %>
 
           <div class="wa-text-center wa-mt-4">
@@ -73,22 +77,29 @@
 </div>
 
 <style>
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 .registration-outer-center {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--wa-color-gray-20, #181818);
+  background: var(--wa-color-cyan-40);
 }
 
 .registration-card-split {
   max-width: 800px;
   width: 100%;
+  --spacing: 0 !important;
   padding: 0;
   border-radius: 2%;
   overflow: hidden;
   box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.75);
-  background-color: var(--wa-color-gray-30);
+  background-color: var(--wa-color-surface-default);
 }
 
 .registration-inner-split {
@@ -100,7 +111,7 @@
 
 .registration-banner {
   flex: 1 1 40%;
-  background: var(--wa-color-primary-80, #222);
+  background: var(--wa-color-primary-80);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,7 +130,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--wa-color-gray-30);
+  background: var(--wa-color-orange-60);
   padding: 2.5rem 2rem;
 }
 
@@ -128,52 +139,41 @@
   max-width: 320px;
 }
 
+wa-button[type="submit"] {
+  width: 100%;
+}
+
+wa-button[type="submit"]::part(base) {
+  border-radius: var(--wa-border-radius-l) !important;
+  padding: var(--wa-space-m) var(--wa-space-l) !important;
+  font-size: var(--wa-font-size-m) !important;
+  font-weight: var(--wa-font-weight-bold) !important;
+  background-color: var(--wa-color-green-60) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 4px 0 0 var(--wa-color-green-20) !important;
+}
+
+wa-button[type="submit"]:hover::part(base) {
+  background-color: var(--wa-color-green-70) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 0 0 var(--wa-color-green-20) !important;
+}
+
+wa-button[type="submit"]:active::part(base) {
+  background-color: var(--wa-color-green-50) !important;
+  transform: translateY(1px) !important;
+  box-shadow: 0 2px 0 0 var(--wa-color-green-20) !important;
+}
+
 .wa-link {
-  color: white;
+  color: var(--wa-color-text-link);
 }
 
 wa-input {
   margin-bottom: 1rem;
 }
 
-h2 {
-  color: var(--wa-color-red-95);
-}
-
-wa-button.blue {
-  width: 100%;
-}
-
-wa-button.blue::part(base) {
-  border-radius: 6px;
-  border: solid 2px;
-  background: #1e15a3;
-  border-top-color: #c7c5f0;
-  border-left-color: #c7c5f0;
-  border-bottom-color: #04012e;
-  border-right-color: #04012e;
-  color: white;
-  font-size: 1.125rem;
-  box-shadow: 0 2px 10px #0002;
-  transition: all var(--wa-transition-slow) var(--wa-transition-easing);
-}
-
-wa-button.blue::part(base):hover {
-  transform: scale(1.05);
-}
-
-wa-button.blue::part(base):active {
-  border-top-color: #04012e;
-  border-right-color: #c7c5f0;
-  border-bottom-color: #c7c5f0;
-  border-left-color: #04012e;
-  transform: translateY(1px);
-}
-
-wa-button.blue::part(base):focus-visible {
-  outline: dashed 2px deeppink;
-  outline-offset: 4px;
-}
 
 @media (max-width: 414px) {
   .registration-inner-split {
