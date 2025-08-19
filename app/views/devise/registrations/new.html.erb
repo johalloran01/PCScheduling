@@ -62,6 +62,26 @@
               class="wa-input"
             ></wa-input>
 
+            <select name="user[time_zone]" required class="wa-select">
+              <option value="">Select Time Zone</option>
+              
+              <!-- Common zones first -->
+              <% common_zones = ['UTC', 'Eastern Time (US & Canada)', 'Central Time (US & Canada)', 'Mountain Time (US & Canada)', 'Pacific Time (US & Canada)', 'Europe/London', 'Europe/Paris', 'Asia/Tokyo'] %>
+              <% common_zones.each do |zone_name| %>
+                <% tz = ActiveSupport::TimeZone[zone_name] %>
+                <option value="<%= tz.name %>"><%= tz.name %></option>
+              <% end %>
+              
+              <!-- Separator -->
+              <option disabled>──────────</option>
+              
+              <!-- All other zones alphabetically -->
+              <% other_zones = ActiveSupport::TimeZone.all.reject { |tz| common_zones.include?(tz.name) }.sort_by(&:name) %>
+              <% other_zones.each do |tz| %>
+                <option value="<%= tz.name %>"><%= tz.name %></option>
+              <% end %>
+            </select>
+
             <wa-button type="submit" class="wa-button--filled wa-button--primary">
               Register
             </wa-button>
@@ -172,6 +192,24 @@ wa-button[type="submit"]:active::part(base) {
 
 wa-input {
   margin-bottom: 1rem;
+}
+
+select.wa-select {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: var(--wa-space-m);
+  border: 1px solid var(--wa-color-border-normal);
+  border-radius: var(--wa-border-radius-m);
+  background-color: var(--wa-color-surface-default);
+  color: var(--wa-color-text-normal);
+  font-family: var(--wa-font-family-body);
+  font-size: var(--wa-font-size-m);
+}
+
+select.wa-select:focus {
+  outline: var(--wa-focus-ring);
+  outline-offset: var(--wa-focus-ring-offset);
+  border-color: var(--wa-color-brand-50);
 }
 
 
