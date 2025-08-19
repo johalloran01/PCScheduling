@@ -1,0 +1,291 @@
+<!-- app/views/home/index.html.erb -->
+<div class="homepage-container">
+ <nav class="main-nav">
+   <div class="nav-content">
+     <div class="nav-brand">
+       <wa-icon name="calendar"></wa-icon>
+       <span>PC Scheduling</span>
+     </div>
+     <div class="nav-actions">
+       <%= link_to "My Availability", user_availabilities_path, class: "wa-button wa-button--small" %>
+       <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "wa-button wa-button--small" %>
+     </div>
+   </div>
+ </nav>
+
+  <!-- Header -->
+  <header class="homepage-header">
+    <div class="header-content">
+      <h1 class="welcome-title">Welcome, <%= current_user.name %>!</h1>
+      <p class="welcome-subtitle">Manage your scheduling sessions and meetups</p>
+    </div>
+    <div class="header-actions">
+      <%= link_to new_meetup_path, class: "wa-button wa-button--filled wa-button--primary" do %>
+        <wa-icon name="plus"></wa-icon>
+        Create New Meetup
+      <% end %>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="homepage-main">
+    <!-- Created Meetups Section -->
+    <section class="meetups-section">
+      <div class="section-header">
+        <h2 class="section-title">My Created Meetups</h2>
+        <p class="section-subtitle">Meetups you've created</p>
+      </div>
+      
+      <% if @created_meetups.any? %>
+        <div class="meetups-grid">
+          <% @created_meetups.each do |meetup| %>
+            <wa-card class="meetup-card">
+              <div class="meetup-card-header">
+                <h3 class="meetup-title"><%= meetup.name %></h3>
+                <div class="meetup-actions">
+                  <%= link_to meetup_path(meetup), class: "wa-button wa-button--small" do %>
+                    <wa-icon name="eye"></wa-icon>
+                    View
+                  <% end %>
+                  <%= link_to edit_meetup_path(meetup), class: "wa-button wa-button--small" do %>
+                    <wa-icon name="edit"></wa-icon>
+                    Edit
+                  <% end %>
+                </div>
+              </div>
+              <p class="meetup-description"><%= meetup.description %></p>
+              <div class="meetup-stats">
+                <span class="stat">
+                  <wa-icon name="users"></wa-icon>
+                  <%= meetup.participants.count %> participants
+                </span>
+              </div>
+            </wa-card>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="empty-state">
+          <wa-icon name="calendar" class="empty-icon"></wa-icon>
+          <p>You haven't created any meetups yet.</p>
+          <%= link_to "Create your first meetup", new_meetup_path, class: "wa-button wa-button--filled wa-button--primary" %>
+        </div>
+      <% end %>
+    </section>
+
+    <!-- Joined Meetups Section -->
+    <section class="meetups-section">
+      <div class="section-header">
+        <h2 class="section-title">My Joined Meetups</h2>
+        <p class="section-subtitle">Meetups you've joined</p>
+      </div>
+      
+      <% if @user_meetups.any? %>
+        <div class="meetups-grid">
+          <% @user_meetups.each do |meetup| %>
+            <wa-card class="meetup-card">
+              <div class="meetup-card-header">
+                <h3 class="meetup-title"><%= meetup.name %></h3>
+                <div class="meetup-actions">
+                  <%= link_to meetup_path(meetup), class: "wa-button wa-button--small" do %>
+                    <wa-icon name="eye"></wa-icon>
+                    View
+                  <% end %>
+                </div>
+              </div>
+              <p class="meetup-description"><%= meetup.description %></p>
+              <div class="meetup-stats">
+                <span class="stat">
+                  <wa-icon name="users"></wa-icon>
+                  <%= meetup.participants.count %> participants
+                </span>
+                <span class="stat">
+                  <wa-icon name="user"></wa-icon>
+                  <%= meetup.creator.name %>
+                </span>
+              </div>
+            </wa-card>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="empty-state">
+          <wa-icon name="calendar" class="empty-icon"></wa-icon>
+          <p>You haven't joined any meetups yet.</p>
+          <p>Ask someone to invite you to a meetup!</p>
+        </div>
+      <% end %>
+    </section>
+  </main>
+</div>
+
+<style>
+	.main-nav {
+	  background: var(--wa-color-surface-default);
+	  border-bottom: 1px solid var(--wa-color-border-normal);
+	  padding: 1rem 2rem;
+	}
+
+	.nav-content {
+	  max-width: 1200px;
+	  margin: 0 auto;
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	}
+
+	.nav-brand {
+	  display: flex;
+	  align-items: center;
+	  gap: 0.5rem;
+	  font-weight: var(--wa-font-weight-bold);
+	  color: var(--wa-color-text-normal);
+	}
+
+	.nav-actions {
+	  display: flex;
+	  gap: 0.5rem;
+	}
+	
+.homepage-container {
+  min-height: 100vh;
+  background: var(--wa-color-gray-95);
+}
+
+.homepage-header {
+  background: var(--wa-color-surface-default);
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.welcome-title {
+  color: var(--wa-color-text-normal);
+  font-size: var(--wa-font-size-xl);
+  font-weight: var(--wa-font-weight-bold);
+  margin: 0;
+}
+
+.welcome-subtitle {
+  color: var(--wa-color-text-subtle);
+  margin: 0.5rem 0 0 0;
+}
+
+.homepage-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.meetups-section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  color: var(--wa-color-text-normal);
+  font-size: var(--wa-font-size-l);
+  font-weight: var(--wa-font-weight-bold);
+  margin: 0 0 0.5rem 0;
+}
+
+.section-subtitle {
+  color: var(--wa-color-text-subtle);
+  margin: 0;
+}
+
+.meetups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.meetup-card {
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meetup-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.meetup-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.meetup-title {
+  color: var(--wa-color-text-normal);
+  font-size: var(--wa-font-size-m);
+  font-weight: var(--wa-font-weight-bold);
+  margin: 0;
+  flex: 1;
+}
+
+.meetup-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.meetup-description {
+  color: var(--wa-color-text-subtle);
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.meetup-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--wa-color-text-subtle);
+  font-size: var(--wa-font-size-s);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background: var(--wa-color-surface-default);
+  border-radius: var(--wa-border-radius-l);
+  border: 2px dashed var(--wa-color-border-subtle);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: var(--wa-color-text-subtle);
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: var(--wa-color-text-subtle);
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .homepage-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .meetups-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .homepage-main {
+    padding: 1rem;
+  }
+}
+</style>

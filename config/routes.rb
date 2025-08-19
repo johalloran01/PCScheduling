@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
+ 
   devise_for :users
 
   resources :user_availabilities, only: [:index, :create] do
