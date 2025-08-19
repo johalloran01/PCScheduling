@@ -7,10 +7,10 @@
        <span>PC Scheduling</span>
      </div>
      <div class="nav-actions">
-       <%= button_to "My Availability", user_availabilities_path, class: "wa-button wa-button--small" %>
+       <%= button_to "My Availability", user_availabilities_path, class: "wa-button--small" %>
        <%= button_to "Sign Out", destroy_user_session_path, 
            method: :delete, 
-           class: "wa-button wa-button--small",
+           class: "wa-button--small",
            form: { style: 'display: inline;' } %>
      </div>
    </div>
@@ -23,7 +23,7 @@
       <p class="welcome-subtitle">Manage your scheduling sessions and meetups</p>
     </div>
     <div class="header-actions">
-      <%= link_to new_meetup_path, class: "wa-button wa-button--filled wa-button--primary" do %>
+      <%= link_to new_meetup_path, class: "wa-button--primary" do %>
         <wa-icon name="plus"></wa-icon>
         Create New Meetup
       <% end %>
@@ -46,11 +46,11 @@
               <div class="meetup-card-header">
                 <h3 class="meetup-title"><%= meetup.name %></h3>
                 <div class="meetup-actions">
-                  <%= link_to meetup_path(meetup), class: "wa-button wa-button--small" do %>
+                  <%= link_to meetup_path(meetup), class: "wa-button--secondary" do %>
                     <wa-icon name="eye"></wa-icon>
                     View
                   <% end %>
-                  <%= link_to edit_meetup_path(meetup), class: "wa-button wa-button--small" do %>
+                  <%= link_to edit_meetup_path(meetup), class: "wa-button--secondary" do %>
                     <wa-icon name="edit"></wa-icon>
                     Edit
                   <% end %>
@@ -69,8 +69,10 @@
       <% else %>
         <div class="empty-state">
           <wa-icon name="calendar" class="empty-icon"></wa-icon>
-          <p>You haven't created any meetups yet.</p>
-          <%= link_to "Create your first meetup", new_meetup_path, class: "wa-button wa-button--filled wa-button--primary" %>
+          <div class="display-empty-message">
+          	<p>You haven't created any meetups yet.</p>
+          </div>
+          <%= link_to "Create your first meetup", new_meetup_path, class: "wa-button--primary" %>
         </div>
       <% end %>
     </section>
@@ -121,32 +123,32 @@
 </div>
 
 <style>
-	.main-nav {
-	  background: var(--wa-color-surface-default);
-	  border-bottom: 1px solid var(--wa-color-border-normal);
-	  padding: 1rem 2rem;
-	}
+.main-nav {
+  background: var(--wa-color-surface-default);
+  border-bottom: 1px solid var(--wa-color-border-normal);
+  padding: 1rem 2rem;
+}
 
-	.nav-content {
-	  max-width: 1200px;
-	  margin: 0 auto;
-	  display: flex;
-	  justify-content: space-between;
-	  align-items: center;
-	}
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-	.nav-brand {
-	  display: flex;
-	  align-items: center;
-	  gap: 0.5rem;
-	  font-weight: var(--wa-font-weight-bold);
-	  color: var(--wa-color-text-normal);
-	}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: var(--wa-font-weight-bold);
+  color: var(--wa-color-text-normal);
+}
 
-	.nav-actions {
-	  display: flex;
-	  gap: 0.5rem;
-	}
+.nav-actions {
+  display: flex;
+  gap: 0.5rem;
+}
 
 .homepage-container {
   min-height: 100vh;
@@ -275,6 +277,88 @@
 .empty-state p {
   color: var(--wa-color-text-subtle);
   margin: 0.5rem 0;
+}
+
+.display-empty-message{
+	margin: 1rem;
+}
+
+.wa-button--primary {
+  border-radius: var(--wa-border-radius-l) !important;
+  padding: var(--wa-space-m) var(--wa-space-l) !important;
+  font-size: var(--wa-font-size-m) !important;
+  font-weight: var(--wa-font-weight-bold) !important;
+  background-color: var(--wa-color-green-60) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 4px 0 0 var(--wa-color-green-20) !important;
+  transition: all var(--wa-transition-normal) var(--wa-transition-easing) !important;
+  cursor: pointer !important;
+  margin: 1rem;
+}
+
+.wa-button--primary:hover {
+  background-color: var(--wa-color-green-70) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 0 0 var(--wa-color-green-20) !important;
+}
+
+.wa-button--primary:active {
+  background-color: var(--wa-color-green-50) !important;
+  transform: translateY(1px) !important;
+  box-shadow: 0 2px 0 0 var(--wa-color-green-20) !important;
+}
+
+/* Secondary Button (Gray - for navigation and secondary actions) */
+.wa-button--secondary {
+  border-radius: var(--wa-border-radius-m) !important;
+  padding: var(--wa-space-s) var(--wa-space-m) !important;
+  font-size: var(--wa-font-size-s) !important;
+  font-weight: var(--wa-font-weight-normal) !important;
+  background-color: var(--wa-color-surface-default) !important;
+  color: var(--wa-color-text-normal) !important;
+  border: 1px solid var(--wa-color-border-normal) !important;
+  box-shadow: 0 2px 0 0 var(--wa-color-gray-30) !important;
+  transition: all var(--wa-transition-normal) var(--wa-transition-easing) !important;
+  cursor: pointer !important;
+}
+
+.wa-button--secondary:hover {
+  background-color: var(--wa-color-gray-90) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 0 0 var(--wa-color-gray-40) !important;
+}
+
+.wa-button--secondary:active {
+  background-color: var(--wa-color-gray-80) !important;
+  transform: translateY(1px) !important;
+  box-shadow: 0 1px 0 0 var(--wa-color-gray-30) !important;
+}
+
+/* Small Button (for navigation and compact spaces) */
+.wa-button--small {
+  border-radius: var(--wa-border-radius-s) !important;
+  padding: var(--wa-space-xs) var(--wa-space-s) !important;
+  font-size: var(--wa-font-size-s) !important;
+  font-weight: var(--wa-font-weight-normal) !important;
+  background-color: var(--wa-color-surface-default) !important;
+  color: var(--wa-color-text-normal) !important;
+  border: 1px solid var(--wa-color-border-normal) !important;
+  box-shadow: 0 1px 0 0 var(--wa-color-gray-30) !important;
+  transition: all var(--wa-transition-normal) var(--wa-transition-easing) !important;
+  cursor: pointer !important;
+}
+
+.wa-button--small:hover {
+  background-color: var(--wa-color-gray-90) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 0 0 var(--wa-color-gray-40) !important;
+}
+
+.wa-button--small:active {
+  background-color: var(--wa-color-gray-80) !important;
+  transform: translateY(1px) !important;
+  box-shadow: 0 1px 0 0 var(--wa-color-gray-30) !important;
 }
 
 @media (max-width: 768px) {
