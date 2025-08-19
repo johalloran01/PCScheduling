@@ -7,8 +7,11 @@
        <span>PC Scheduling</span>
      </div>
      <div class="nav-actions">
-       <%= link_to "My Availability", user_availabilities_path, class: "wa-button wa-button--small" %>
-       <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "wa-button wa-button--small" %>
+       <%= button_to "My Availability", user_availabilities_path, class: "wa-button wa-button--small" %>
+       <%= button_to "Sign Out", destroy_user_session_path, 
+           method: :delete, 
+           class: "wa-button wa-button--small",
+           form: { style: 'display: inline;' } %>
      </div>
    </div>
  </nav>
@@ -144,7 +147,7 @@
 	  display: flex;
 	  gap: 0.5rem;
 	}
-	
+
 .homepage-container {
   min-height: 100vh;
   background: var(--wa-color-gray-95);
