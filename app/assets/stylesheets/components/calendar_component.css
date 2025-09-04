@@ -1,0 +1,17 @@
+/* ==========================================================================
+   CALENDAR COMPONENT STYLES
+   ========================================================================== */
+
+.calendar-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.calendar-table {
+  width: 90%;
+  justify-content: center;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
