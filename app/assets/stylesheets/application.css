@@ -123,4 +123,51 @@ wa-button[type="submit"]:active::part(base) {
    COMMON UTILITIES
    ========================================================================== */
 
-   
+/* Form Title */
+.form-title {
+	color: white;
+	font-size: var(--wa-font-size-l);
+	font-weight: var(--wa-font-weight-bold);
+}
+
+/* Link Styling */
+.wa-link {
+	color: var(--wa-color-text-link);
+}
+
+/* Form Input Spacing */
+wa-input {
+	margin-bottom: 1rem;
+}
+
+/* Select Styling */
+select.wa-select {
+	width: 100%;
+	margin-bottom: 1rem;
+	padding: var(--wa-space-m);
+	border: 1px solid var(--wa-color-border-normal);
+	border-radius: var(--wa-border-radius-m);
+	background-color: var(--wa-color-surface-default);
+	color: var(--wa-color-text-normal);
+	font-family: var(--wa-font-family-body);
+	font-size: var(--wa-font-size-m);
+}
+
+select.wa-select:focus {
+	outline: var(--wa-focus-ring);
+	outline-offset: var(--wa-focus-ring-offset);
+	border-color: var(--wa-color-brand-50);
+}
+
+/* Checkbox Container */
+.wa-checkbox-container {
+	margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+wa-checkbox {
+	color: white;
+	font-size: var(--wa-font-size-s);
+}
+
