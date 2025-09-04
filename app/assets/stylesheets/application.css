@@ -65,3 +65,30 @@
 	box-shadow: 0 1px 0 0 var(--wa-color-gray-30) !important;
 }
 
+/* Small Button: Navigation and Tight Spaces */
+.wa-button--small {
+	border-radius: var(--wa-border-radius-s) !important;
+	padding: var(--wa-space-xs) var(--wa-space-s) !important;
+	font-size: var(--wa-font-size-s) !important;
+	font-weight: var(--wa-font-weight-normal) !important;
+	background-color: var(--wa-color-surface-default) !important;
+	color: var(--wa-color-text-normal) !important;
+	border: 1px solid var(--wa-color-border-normal) !important;
+	box-shadow: 0 1px 0 0 var(--wa-color-gray-30) !important;
+	transition: all var(--wa-transition-normal) var(--wa-transition-easing) !important;
+	cursor: pointer !important;
+}
+
+.wa-button--small:hover {
+	background-color: var(--wa-color-gray-90) !important;
+	transform: translateY(-1px) !important;
+	box-shadow: 0 2px 0 0 var(--wa-color-gray-40) !important;
+}
+
+.wa-button--small:active {
+	background-color: var(--wa-color-gray-80) !important;
+	transform: translateY(1px) !important;
+	box-shadow: 0 1px 0 0 var(--wa-color-gray-30) !important;
+}
+
+
