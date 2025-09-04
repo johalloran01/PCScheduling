@@ -27,3 +27,15 @@
 	margin: 1rem;
 }
 
+.wa-button--primary:hover {
+	background-color: var(--wa-color-green-70) !important;
+	transform: translateY(-1px) !important;
+	box-shadow: 0 6px 0 0 var(--wa-color-green-20) !important;
+}
+
+.wa-button--primary:active {
+	background-color: var(--wa-color-green-50) !important;
+	transform: translateY(1px) !important;
+	box-shadow: 0 2px 0 0 var(--wa-color-green-20) !important;
+}
+
