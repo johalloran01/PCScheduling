@@ -8,3 +8,22 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+/* ==========================================================================
+   BUTTON STANDARDIZATION
+   ========================================================================== */
+
+/* Primary Button - Main action buttons */
+.wa-button--primary {
+	border-radius: var(--wa-border-radius-l) !important;
+	padding: var(--wa-space-m) var(--wa-sapce-l) !important;
+	font-size: var(--wa-font-size-m) !important;
+	font-weight: var(--wa-font-weight-bold) !important;
+	background-color: var(--wa-color-green-20) !important;
+	color: white !important;
+	border: none !important;
+	box-shadow: 0 4px 0 0 var(--wa-color-green-20) !important;
+	transition: all var(--wa-transition-normal) var(--wa-transition-easing) !important;
+	cursor: pointer !important;
+	margin: 1rem;
+}
+
