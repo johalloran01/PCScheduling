@@ -21,6 +21,9 @@ gem 'devise'
 # Adding View Components for reusable elements
 gem "view_component"
 
+# Reaction View ERB: Thank you Marco! 
+gem "reactionview"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
 

@@ -121,6 +121,14 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    herb (0.7.0-aarch64-linux-gnu)
+    herb (0.7.0-aarch64-linux-musl)
+    herb (0.7.0-arm-linux-gnu)
+    herb (0.7.0-arm-linux-musl)
+    herb (0.7.0-arm64-darwin)
+    herb (0.7.0-x86_64-darwin)
+    herb (0.7.0-x86_64-linux-gnu)
+    herb (0.7.0-x86_64-linux-musl)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -259,6 +267,9 @@ GEM
     rake (13.2.1)
     rdoc (6.13.1)
       psych (>= 4.0.0)
+    reactionview (0.1.0)
+      actionview (>= 7.0)
+      herb (>= 0.7.0, < 1.0.0)
     regexp_parser (2.10.0)
     reline (0.6.1)
       io-console (~> 0.5)
@@ -409,6 +420,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
+  reactionview
   rubocop-rails-omakase
   selenium-webdriver
   solid_cable
