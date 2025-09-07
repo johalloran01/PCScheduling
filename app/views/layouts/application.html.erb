@@ -45,7 +45,7 @@
     <%= stylesheet_link_tag "components/calendar_component", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "components/timeslot_component", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "components/auth_forms", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
   <body>
