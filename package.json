@@ -6,7 +6,8 @@
     "webawesome": "file:./vendor/webawesome-zip"
   },
   "scripts": {
-    "build:js": "node build-js.config.mjs"
+    "build:js": "node build-js.config.mjs",
+    "build:css": "node build-css.config.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.25.9",

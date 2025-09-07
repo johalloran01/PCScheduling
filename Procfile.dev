@@ -1,1 +1,2 @@
 js: npm run build:js -- --watch
+css: npm run build:css -- --watch
