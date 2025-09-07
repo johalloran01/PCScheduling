@@ -22,6 +22,8 @@ gem "view_component"
 # Reaction View ERB: Thank you Marco! 
 gem "reactionview"
 
+# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
+gem "jsbundling-rails"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
 
