@@ -24,6 +24,9 @@ gem "reactionview"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
+# Bundle and transpile CSS [https://github.com/rails/cssbundling-rails]
+gem "cssbundling-rails"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
 
@@ -68,4 +71,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
