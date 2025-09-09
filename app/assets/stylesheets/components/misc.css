@@ -1,0 +1,173 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+/* ==========================================================================
+   BUTTON STANDARDIZATION
+   ========================================================================== */
+
+/* Primary Button - Main action buttons */
+.wa-button--primary {
+	border-radius: var(--wa-border-radius-l) !important;
+	padding: var(--wa-space-m) var(--wa-sapce-l) !important;
+	font-size: var(--wa-font-size-m) !important;
+	font-weight: var(--wa-font-weight-bold) !important;
+	background-color: var(--wa-color-green-20) !important;
+	color: white !important;
+	border: none !important;
+	box-shadow: 0 4px 0 0 var(--wa-color-green-20) !important;
+	transition: all var(--wa-transition-normal) var(--wa-transition-easing) !important;
+	cursor: pointer !important;
+	margin: 1rem;
+}
+
+.wa-button--primary:hover {
+	background-color: var(--wa-color-green-70) !important;
+	transform: translateY(-1px) !important;
+	box-shadow: 0 6px 0 0 var(--wa-color-green-20) !important;
+}
+
+.wa-button--primary:active {
+	background-color: var(--wa-color-green-50) !important;
+	transform: translateY(1px) !important;
+	box-shadow: 0 2px 0 0 var(--wa-color-green-20) !important;
+}
+
+/* Secondary Button: Secondary Actions and Navigation */
+.wa-button--secondary {
+	border-radius: var(--wa-border-radius-m) !important;
+	padding: var(--wa-space-s) var(--wa-space-m) !important;
+	font-size: var(--wa-font-size-s) !important;
+	font-weight: var(--wa-font-weight-normal) !important;
+	background-color: var(--wa-color-surface-default) !important;
+	color: var(--wa-color-text-normal) !important;
+	border: 1px solid var(--wa-color-border-normal) !important;
+	box-shadow: 0 2px 0 0 var(--wa-color-gray-30) !important;
+  	transition: all var(--wa-transition-normal) var(--wa-transition-easing) !important;
+  	cursor: pointer !important;
+}
+
+.wa-button--secondary:hover {
+	background-color: var(--wa-color-gray-90) !important;
+	transform: translateY(-1px) !important;
+	box-shadow: 0 3px 0 0 var(--wa-color-gray-30) !important;
+}
+
+.wa-button--secondary:active {
+	background-color: var(--wa-color-gray-80) !important;
+	transform: translateY(1px) !important;
+	box-shadow: 0 1px 0 0 var(--wa-color-gray-30) !important;
+}
+
+/* Small Button: Navigation and Tight Spaces */
+.wa-button--small {
+	border-radius: var(--wa-border-radius-s) !important;
+	padding: var(--wa-space-xs) var(--wa-space-s) !important;
+	font-size: var(--wa-font-size-s) !important;
+	font-weight: var(--wa-font-weight-normal) !important;
+	background-color: var(--wa-color-surface-default) !important;
+	color: var(--wa-color-text-normal) !important;
+	border: 1px solid var(--wa-color-border-normal) !important;
+	box-shadow: 0 1px 0 0 var(--wa-color-gray-30) !important;
+	transition: all var(--wa-transition-normal) var(--wa-transition-easing) !important;
+	cursor: pointer !important;
+}
+
+.wa-button--small:hover {
+	background-color: var(--wa-color-gray-90) !important;
+	transform: translateY(-1px) !important;
+	box-shadow: 0 2px 0 0 var(--wa-color-gray-40) !important;
+}
+
+.wa-button--small:active {
+	background-color: var(--wa-color-gray-80) !important;
+	transform: translateY(1px) !important;
+	box-shadow: 0 1px 0 0 var(--wa-color-gray-30) !important;
+}
+
+/* Form Button Overrides and Styling */
+wa-button[type="submit"] {
+	width: 100%;
+}
+
+wa-button[type="submit"]::part(base) {
+	border-radius: var(--wa-border-radius-l) !important;
+	padding: var(--wa-space-m) var(--wa-space-l) !important;
+	font-size: var(--wa-font-size-m) !important;
+	font-weight: var(--wa-font-weight-bold) !important;
+	background-color: var(--wa-color-green-60) !important;
+	color: white !important;
+	border: none !important;
+	box-shadow: 0 4px 0 0 var(--wa-color-green-20) !important;
+}
+
+wa-button[type="submit"]:hover::part(base) {
+	background-color: var(--wa-color-green-70) !important;
+	transform: translateY(-1px) !important;
+	box-shadow: 0 6px 0 0 var(--wa-color-green-20) !important;
+}
+
+wa-button[type="submit"]:active::part(base) {
+	background-color: var(--wa-color-green-50) !important;
+	transform: translateY(1px) !important;
+	box-shadow: 0 2px 0 0 var(--wa-color-green-20) !important;
+}
+
+/* ==========================================================================
+   COMMON UTILITIES
+   ========================================================================== */
+
+/* Form Title */
+.form-title {
+	color: white;
+	font-size: var(--wa-font-size-l);
+	font-weight: var(--wa-font-weight-bold);
+}
+
+/* Link Styling */
+.wa-link {
+	color: var(--wa-color-text-link);
+}
+
+/* Form Input Spacing */
+wa-input {
+	margin-bottom: 1rem;
+}
+
+/* Select Styling */
+select.wa-select {
+	width: 100%;
+	margin-bottom: 1rem;
+	padding: var(--wa-space-m);
+	border: 1px solid var(--wa-color-border-normal);
+	border-radius: var(--wa-border-radius-m);
+	background-color: var(--wa-color-surface-default);
+	color: var(--wa-color-text-normal);
+	font-family: var(--wa-font-family-body);
+	font-size: var(--wa-font-size-m);
+}
+
+select.wa-select:focus {
+	outline: var(--wa-focus-ring);
+	outline-offset: var(--wa-focus-ring-offset);
+	border-color: var(--wa-color-brand-50);
+}
+
+/* Checkbox Container */
+.wa-checkbox-container {
+	margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+wa-checkbox {
+	color: white;
+	font-size: var(--wa-font-size-s);
+}
+
