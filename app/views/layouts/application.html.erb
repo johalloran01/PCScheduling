@@ -21,6 +21,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "webawesome", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag "webawesome", type: :module, defer: true, data: {webawesome: '/assets/webawesome-dist'} %>
   </head>
 
   <body>
