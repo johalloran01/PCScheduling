@@ -51,7 +51,7 @@
 .welcome-title {
     color: var(--wa-color-text-normal);
     font-size: var(--wa-font-size-xl);
-    font-wight: var(--wa-font-weight-bold);
+    font-weight: var(--wa-font-weight-bold);
     margin: 0;
 }
 
@@ -79,7 +79,7 @@
 .section-title {
     color: var(--wa-color-text-normal);
     font-size: var(--wa-font-size-l);
-    font-wight: var(--wa-font-weight-bold);
+    font-weight: var(--wa-font-weight-bold);
     margin: 0 0 0.5rem 0;
 }
 
