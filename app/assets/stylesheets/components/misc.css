@@ -13,7 +13,9 @@
    ========================================================================== */
 
 /* Primary Button - Main action buttons */
-.wa-button--primary {
+.wa-button--primary,
+wa-button.wa-button--primary,
+wa-button.wa-button--filled.wa-button--primary {
 	border-radius: var(--wa-border-radius-l) !important;
 	padding: var(--wa-space-m) var(--wa-sapce-l) !important;
 	font-size: var(--wa-font-size-m) !important;
@@ -27,13 +29,17 @@
 	margin: 1rem;
 }
 
-.wa-button--primary:hover {
+.wa-button--primary:hover,
+wa-button.wa-button--primary:hover,
+wa-button.wa-button--filled.wa-button--primary:hover {
 	background-color: var(--wa-color-green-70) !important;
 	transform: translateY(-1px) !important;
 	box-shadow: 0 6px 0 0 var(--wa-color-green-20) !important;
 }
 
-.wa-button--primary:active {
+.wa-button--primary:active,
+wa-button.wa-button--primary:active,
+wa-button.wa-button--filled.wa-button--primary:active {
 	background-color: var(--wa-color-green-50) !important;
 	transform: translateY(1px) !important;
 	box-shadow: 0 2px 0 0 var(--wa-color-green-20) !important;

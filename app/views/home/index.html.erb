@@ -23,9 +23,11 @@
       <p class="welcome-subtitle">Manage your scheduling sessions and meetups</p>
     </div>
     <div class="header-actions">
-      <%= link_to new_meetup_path, class: "wa-button--primary" do %>
-        <wa-icon name="plus"></wa-icon>
-        Create New Meetup
+      <%= form_with url: new_meetup_path, method: :get, local: true do |form| %>
+        <wa-button type="submit" class="wa-button--filled wa-button--primary">
+          <wa-icon slot="start" name="plus"></wa-icon>
+          Create New Meetup
+        </wa-button>
       <% end %>
     </div>
   </header>
@@ -72,7 +74,12 @@
           <div class="display-empty-message">
           	<p>You haven't created any meetups yet.</p>
           </div>
-          <%= link_to "Create your first meetup", new_meetup_path, class: "wa-button--primary" %>
+            <%= form_with url: new_meetup_path, method: :get, local: true do |form| %>
+              <wa-button type="submit" class="wa-button--filled wa-button--primary">
+                <wa-icon slot="start" name="plus"></wa-icon>
+                Create New Meetup
+              </wa-button>
+            <% end %>
         </div>
       <% end %>
     </section>
