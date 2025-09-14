@@ -1,13 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   name: Alice
   email: alice@example.com
-  password_digest: <%= User.new(password: 'password').password_digest %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   time_zone: "Eastern Time (US & Canada)"
 
 two:
   name: Bob
   email: bob@example.com
-  password_digest: <%= User.new(password: 'password').password_digest %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   time_zone: "Pacific Time (US & Canada)"
